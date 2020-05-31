@@ -150,11 +150,6 @@ class ListCard extends HTMLElement {
                           let newText = `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
 		      }
-		      else if (columns[column].type === 'torrent') {
-			if (feed[entry][columns[column].field[1].hasOwnProperty('href')) {
-			  let newText = `<button>"${feed[entry][columns[column].field][0].url}"</button>`
-			}
-		      }
                       // else if (columns[column].type === 'button') {
                       //   card_content += `<paper-button raised>${feed[entry][columns[column].button_text]}</paper-button>`;
                       // }
