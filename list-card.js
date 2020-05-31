@@ -147,12 +147,12 @@ class ListCard extends HTMLElement {
                     if (columns[column].hasOwnProperty('type')) {
                       if (columns[column].type === 'image') {
                         if (feed[entry][columns[column].field][0].hasOwnProperty('url')) {
-                          let newText += `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
+                          let newText = `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
 		      }
 		      if (columns[column].type === 'torrent' {
 			if (feed[entry][columns[column].field[1].hasOwnProperty('href')) {
-			  let newText += `<button>${feed[entry][columns[column].field][0].url}"</button>`
+			  let newText = `<button>${feed[entry][columns[column].field][0].url}"</button>`
 			}
 		      }
                       // else if (columns[column].type === 'button') {
