@@ -152,7 +152,7 @@ class ListCard extends HTMLElement {
 		      }
 		      if (columns[column].type === 'torrent') {
 			if (feed[entry][columns[column].field[1].hasOwnProperty('href')) {
-			  let newText = `<button>${feed[entry][columns[column].field][0].url}"</button>`
+			  let newText = `<button>"${feed[entry][columns[column].field][0].url}"</button>`
 			}
 		      }
                       // else if (columns[column].type === 'button') {
