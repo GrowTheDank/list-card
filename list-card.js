@@ -150,7 +150,7 @@ class ListCard extends HTMLElement {
                           let newText = `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
 		      }
-		      if (columns[column].type === 'torrent') {
+		      else if (columns[column].type === 'torrent') {
 			if (feed[entry][columns[column].field[1].hasOwnProperty('href')) {
 			  let newText = `<button>"${feed[entry][columns[column].field][0].url}"</button>`
 			}
