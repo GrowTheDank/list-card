@@ -147,30 +147,31 @@ class ListCard extends HTMLElement {
                     if (columns[column].hasOwnProperty('type')) {
                       if (columns[column].type === 'image') {
                         if (feed[entry][columns[column].field][0].hasOwnProperty('url')) {
-                            card_content += `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
-                          } else {
-                            card_content += `<img src="${feed[entry][columns[column].field]}" width="70" height="90">`;
+                          let newText += `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
-                      }
+		      }
+		      if (columns[column].type === 'torrent' {
+			if (feed[entry][columns[column].field[1].hasOwnProperty('href')) {
+			  let newText += `<button>${feed[entry][columns[column].field][0].url}"</button>`
+			}
+		      }
                       // else if (columns[column].type === 'button') {
                       //   card_content += `<paper-button raised>${feed[entry][columns[column].button_text]}</paper-button>`;
                       // }
-                    } else {
-                      let newText = feed[entry][columns[column].field];
-
-                      if (columns[column].hasOwnProperty('regex')) {
-                        newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
-                      } 
-                      if (columns[column].hasOwnProperty('prefix')) {
-                        newText = columns[column].prefix + newText;
-                      } 
-                      if (columns[column].hasOwnProperty('postfix')) {
-                        newText += columns[column].postfix;
-                      }
-
-                      card_content += `${newText}`;
+		    } else {
+		        let newText = feed[entry][columns[column].field];
                     }
-
+                    if (columns[column].hasOwnProperty('regex')) {
+                      newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
+                    } 
+                    if (columns[column].hasOwnProperty('prefix')) {
+                      newText = columns[column].prefix + newText;
+                    } 
+                    if (columns[column].hasOwnProperty('postfix')) {
+                      newText += columns[column].postfix;
+                    }
+                    card_content += `${newText}`;
+                    }
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
