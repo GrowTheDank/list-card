@@ -153,12 +153,11 @@ class ListCard extends HTMLElement {
                       // else if (columns[column].type === 'button') {
                       //   card_content += `<paper-button raised>${feed[entry][columns[column].button_text]}</paper-button>`;
                       // }
+		    } else if (columns[column].hasOwnProperty('regex')) {
+                      let newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
 		    } else {
 		        let newText = feed[entry][columns[column].field];
                     }
-                    if (columns[column].hasOwnProperty('regex')) {
-                      newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
-                    } 
                     if (columns[column].hasOwnProperty('prefix')) {
                       newText = columns[column].prefix + newText;
                     } 
