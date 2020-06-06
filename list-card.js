@@ -187,9 +187,6 @@ class ListCard extends HTMLElement {
         } else {
           this.style.display = 'none';
         }
-      } else {
-        this.style.display = 'none';
-      }
     }
 
     getCardSize() {
