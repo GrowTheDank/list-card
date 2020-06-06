@@ -115,7 +115,6 @@ class ListCard extends HTMLElement {
 
           for (let entry in feed) {
             if (rows >= rowLimit) break;
-
             if (feed.hasOwnProperty(entry)) {
               if (!columns) {
                 for (let field in feed[entry]) {
@@ -132,10 +131,8 @@ class ListCard extends HTMLElement {
                     break;
                   }
                 }
-
                 if (!has_field) continue;
                 card_content += `<tr>`;
-
                 for (let column in columns) {
                   if (columns.hasOwnProperty(column)) {
                     card_content += `<td class=${columns[column].field}>`;
@@ -163,23 +160,23 @@ class ListCard extends HTMLElement {
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
-
                     card_content += `</td>`;
                   }
                 }
               }
-
               card_content += `</tr>`;
               ++rows;
             }
           }
-
           root.lastChild.hass = hass;
           card_content += `</tbody></table>`;
           root.getElementById('container').innerHTML = card_content;
         } else {
           this.style.display = 'none';
         }
+      } else {
+        this.style.display = 'none';
+      }
     }
 
     getCardSize() {
