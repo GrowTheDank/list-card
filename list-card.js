@@ -146,12 +146,12 @@ class ListCard extends HTMLElement {
 		      }
 		    } else {
 			if (columns[column].hasOwnProperty('regex')) {
-                  	  newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
+                  	  let newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
 		    	} else {
-		          newText = feed[entry][columns[column].field];
+		          let newText = feed[entry][columns[column].field];
                     	}
                     	if (columns[column].hasOwnProperty('prefix')) {
-                      	  newText = columns[column].prefix + feed[entry][columns[column].field];
+                      	  let newText = columns[column].prefix + feed[entry][columns[column].field];
                     	} 
                     	if (columns[column].hasOwnProperty('postfix')) {
                       	  newText += columns[column].postfix;
