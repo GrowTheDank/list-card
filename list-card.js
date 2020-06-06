@@ -124,7 +124,6 @@ class ListCard extends HTMLElement {
                 }
               } else {
                 let has_field = true;
-
                 for (let column in columns) {
                   if (!feed[entry].hasOwnProperty(columns[column].field)) {
                     has_field = false;
@@ -145,18 +144,20 @@ class ListCard extends HTMLElement {
                           let newText = `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
 		      }
-		    } else if (columns[column].hasOwnProperty('regex')) {
-                      let newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
 		    } else {
-		        let newText = feed[entry][columns[column].field];
-                    }
-                    if (columns[column].hasOwnProperty('prefix')) {
-                      newText = columns[column].prefix + newText;
-                    } 
-                    if (columns[column].hasOwnProperty('postfix')) {
-                      newText += columns[column].postfix;
-                    }
-                    card_content += `${newText}`;
+			if (columns[column].hasOwnProperty('regex')) {
+                      	  let newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
+		    	} else {
+		          let newText = feed[entry][columns[column].field];
+                    	}
+                    	if (columns[column].hasOwnProperty('prefix')) {
+                      	  newText = columns[column].prefix + newText;
+                    	} 
+                    	if (columns[column].hasOwnProperty('postfix')) {
+                      	  newText += columns[column].postfix;
+                    	}
+                    	card_content += `${newText}`;
+		    }
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
