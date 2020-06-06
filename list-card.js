@@ -139,20 +139,15 @@ class ListCard extends HTMLElement {
                 for (let column in columns) {
                   if (columns.hasOwnProperty(column)) {
                     card_content += `<td class=${columns[column].field}>`;
-
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `<a href="${feed[entry][columns[column].add_link]}" target='_blank'>`;
                     }
-
                     if (columns[column].hasOwnProperty('type')) {
                       if (columns[column].type === 'image') {
                         if (feed[entry][columns[column].field][0].hasOwnProperty('url')) {
                           let newText = `<img src="${feed[entry][columns[column].field][0].url}" width="70" height="90">`;
                           }
 		      }
-                      // else if (columns[column].type === 'button') {
-                      //   card_content += `<paper-button raised>${feed[entry][columns[column].button_text]}</paper-button>`;
-                      // }
 		    } else if (columns[column].hasOwnProperty('regex')) {
                       let newText = new RegExp(columns[column].regex).exec(feed[entry][columns[column].field]);
 		    } else {
@@ -165,7 +160,6 @@ class ListCard extends HTMLElement {
                       newText += columns[column].postfix;
                     }
                     card_content += `${newText}`;
-                    }
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
