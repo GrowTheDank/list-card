@@ -93,25 +93,7 @@ class ListCard extends HTMLElement {
         let rows = 0;
 
         if (feed !== undefined && Object.keys(feed).length > 0) {
-          let card_content = '<table><thread><tr>';
-
-          if (!columns) {
-            card_content += `<tr>`;
-
-            for (let column in feed[0]) {
-              if (feed[0].hasOwnProperty(column)) {
-                card_content += `<th>${feed[0][column]}</th>`;
-              }
-            }
-          } else {
-            for (let column in columns) {
-              if (columns.hasOwnProperty(column)) {
-                card_content += `<th class=${columns[column].field}>${columns[column].title}</th>`;
-              }
-            }
-          }
-
-          card_content += `</tr></thead><tbody>`;
+          let card_content = '<ul>';
 
           for (let entry in feed) {
             if (rows >= rowLimit) break;
@@ -119,7 +101,7 @@ class ListCard extends HTMLElement {
               if (!columns) {
                 for (let field in feed[entry]) {
                   if (feed[entry].hasOwnProperty(field)) {
-                    card_content += `<td>${feed[entry][field]}</td>`;
+                    card_content += `${feed[entry][field]}`;
                   }
                 }
               } else {
@@ -131,10 +113,9 @@ class ListCard extends HTMLElement {
                   }
                 }
                 if (!has_field) continue;
-                card_content += `<tr>`;
                 for (let column in columns) {
                   if (columns.hasOwnProperty(column)) {
-                    card_content += `<td class=${columns[column].field}>`;
+                    card_content += `<li class=${columns[column].field}>`;
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `<a href="${feed[entry][columns[column].add_link]}" target='_blank'>`;
                     }
@@ -169,16 +150,15 @@ class ListCard extends HTMLElement {
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
-                    card_content += `</td>`;
                   }
                 }
               }
-              card_content += `</tr>`;
+              card_content += `</li`;
               ++rows;
             }
           }
           root.lastChild.hass = hass;
-          card_content += `</tbody></table>`;
+          card_content += `</ul>`;
           root.getElementById('container').innerHTML = card_content;
         } else {
           this.style.display = 'none';
