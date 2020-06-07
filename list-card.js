@@ -150,10 +150,10 @@ class ListCard extends HTMLElement {
                     if (columns[column].hasOwnProperty('add_link')) {
                       card_content +=  `</a>`;
                     }
+		    card_content += `</li>`;
                   }
                 }
               }
-              card_content += `</li`;
               ++rows;
             }
           }
